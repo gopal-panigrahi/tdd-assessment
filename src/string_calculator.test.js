@@ -5,4 +5,9 @@ describe("string calculator", () => {
     const result = string_calculator("");
     expect(result).toBe(0);
   });
+
+  test("when string contains only 1 number", () => {
+    const result = string_calculator("2");
+    expect(result).toBe(2);
+  });
 });
