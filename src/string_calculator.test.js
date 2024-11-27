@@ -15,4 +15,9 @@ describe("string calculator", () => {
     const result = string_calculator("2,3,4,5,6");
     expect(result).toBe(2 + 3 + 4 + 5 + 6);
   });
+
+  test("when string contains comma and newline both as delimiter", () => {
+    const result = string_calculator("1\n2,3");
+    expect(result).toBe(1 + 2 + 3);
+  });
 });
