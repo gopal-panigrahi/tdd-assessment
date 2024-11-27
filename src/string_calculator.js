@@ -1,4 +1,7 @@
-function string_calculator() {
+function string_calculator(numbers) {
+  if (numbers === "") {
+    return 0;
+  }
 }
 
 module.exports = {
