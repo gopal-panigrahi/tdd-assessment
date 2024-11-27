@@ -49,4 +49,9 @@ describe("string calculator", () => {
     const result = string_calculator("2,1001");
     expect(result).toBe(2);
   });
+
+  test("when string is passed with delimiters of any length", () => {
+    const result = string_calculator("//[***]\n1***2***3");
+    expect(result).toBe(1 + 2 + 3);
+  });
 });

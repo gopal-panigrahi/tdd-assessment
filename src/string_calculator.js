@@ -4,7 +4,7 @@ function string_calculator(numbers) {
 
   if (numbers.startsWith("//")) {
     [delimiters, number_string] = numbers.split("\n");
-    delimiters = delimiters.substring(2);
+    delimiters = delimiters.substring(2).replace("[", "").replace("]", "");
   }
 
   const numbers_arr = number_string
