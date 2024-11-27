@@ -30,4 +30,11 @@ describe("string calculator", () => {
     const result = string_calculator("//|||\n1|||2");
     expect(result).toBe(1 + 2);
   });
+
+  test("when string is passed with negative numbers it should throw exception", () => {
+    function driver() {
+      string_calculator("2,-1");
+    }
+    expect(driver).toThrow(new Error("negative numbers not allowed -1"));
+  });
 });
