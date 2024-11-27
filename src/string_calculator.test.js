@@ -25,4 +25,9 @@ describe("string calculator", () => {
     const result = string_calculator("//;\n1;2");
     expect(result).toBe(1 + 2);
   });
+
+  test("when string is passed with custom delimiter with multiple characters", () => {
+    const result = string_calculator("//|||\n1|||2");
+    expect(result).toBe(1 + 2);
+  });
 });
