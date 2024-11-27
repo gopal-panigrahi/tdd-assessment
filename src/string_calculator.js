@@ -1,7 +1,7 @@
 function string_calculator(numbers) {
-  if (numbers === "") {
-    return 0;
-  }
+  const numbers_arr = numbers.split(",").filter((n) => !!n);
+  const sum = numbers_arr.reduce((acc, val) => acc + parseInt(val), 0);
+  return sum;
 }
 
 module.exports = {
