@@ -10,4 +10,9 @@ describe("string calculator", () => {
     const result = string_calculator("2");
     expect(result).toBe(2);
   });
+
+  test("when string contains only multiple numbers", () => {
+    const result = string_calculator("2,3,4,5,6");
+    expect(result).toBe(2 + 3 + 4 + 5 + 6);
+  });
 });
