@@ -55,8 +55,13 @@ describe("string calculator", () => {
     expect(result).toBe(1 + 2 + 3);
   });
 
-  test("when string is passed with multiple delimiters of any length", () => {
+  test("when string is passed with multiple delimiters of single length", () => {
     const result = string_calculator("//[*][%]\n1*2%3");
+    expect(result).toBe(1 + 2 + 3);
+  });
+
+  test("when string is passed with multiple delimiters of any length", () => {
+    const result = string_calculator("//[****][%%%%]\n1****2%%%%3");
     expect(result).toBe(1 + 2 + 3);
   });
 });
