@@ -37,4 +37,11 @@ describe("string calculator", () => {
     }
     expect(driver).toThrow(new Error("negative numbers not allowed -1"));
   });
+
+  test("when string is passed with multiple negative numbers it should throw exception", () => {
+    function driver() {
+      string_calculator("2,-1,-3,-4,5");
+    }
+    expect(driver).toThrow(new Error("negative numbers not allowed -1,-3,-4"));
+  });
 });
