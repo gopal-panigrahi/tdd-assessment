@@ -4,7 +4,12 @@ function string_calculator(numbers) {
 
   if (numbers.startsWith("//")) {
     [delimiters, number_string] = numbers.split("\n");
-    delimiters = delimiters.substring(2).replace("[", "").replace("]", "");
+    delimiters = delimiters
+      .substring(2)
+      .split("][")
+      .map((d) => d.replace("[", "").replace("]", ""));
+
+    delimiters = new RegExp(`[${delimiters.join(",")}]`);
   }
 
   const numbers_arr = number_string
