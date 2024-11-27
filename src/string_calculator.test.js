@@ -44,4 +44,9 @@ describe("string calculator", () => {
     }
     expect(driver).toThrow(new Error("negative numbers not allowed -1,-3,-4"));
   });
+
+  test("when string is passed with numbers greater than 1000", () => {
+    const result = string_calculator("2,1001");
+    expect(result).toBe(2);
+  });
 });

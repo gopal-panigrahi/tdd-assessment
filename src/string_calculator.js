@@ -10,7 +10,8 @@ function string_calculator(numbers) {
   const numbers_arr = number_string
     .split(delimiters)
     .filter((n) => !!n)
-    .map((n) => parseInt(n));
+    .map((n) => parseInt(n))
+    .filter((n) => n < 1000);
 
   const negative_nums = numbers_arr.filter((n) => n < 0);
 
