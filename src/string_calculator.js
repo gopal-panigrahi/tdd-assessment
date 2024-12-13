@@ -3,7 +3,40 @@ function string_calculator(numbers) {
   let delimiters = /[\,\n]/;
 
   if (numbers.startsWith("//")) {
-    [delimiters, number_string] = numbers.split("\n");
+    number_string = numbers.split("\n")[1];
+    delimiters = parse_delimiters(numbers);
+  }
+
+  const numbers_arr = transform_into_numbers(number_string, delimiters);
+
+  throwIfContainsNegatives(numbers_arr);
+
+  const sum = numbers_arr.reduce((acc, val) => acc + val, 0);
+  return sum;
+}
+
+function throwIfContainsNegatives(numbers_arr) {
+  const negative_nums = numbers_arr.filter((n) => n < 0);
+
+  if (negative_nums.length > 0) {
+    throw new Error(`negative numbers not allowed ${negative_nums.join(",")}`);
+  }
+}
+
+function transform_into_numbers(number_string, delimiters) {
+  return number_string
+    .split(delimiters)
+    .filter((n) => !!n)
+    .map((n) => parseInt(n))
+    .filter((n) => n < 1000);
+}
+
+function parse_delimiters(numbers) {
+  let delimiters = /[\,\n]/;
+
+  if (numbers.startsWith("//")) {
+    delimiters = numbers.split("\n")[0];
+
     delimiters = delimiters
       .substring(2)
       .split("][")
@@ -12,20 +45,7 @@ function string_calculator(numbers) {
     delimiters = new RegExp(`[${delimiters.join(",")}]`);
   }
 
-  const numbers_arr = number_string
-    .split(delimiters)
-    .filter((n) => !!n)
-    .map((n) => parseInt(n))
-    .filter((n) => n < 1000);
-
-  const negative_nums = numbers_arr.filter((n) => n < 0);
-
-  if (negative_nums.length > 0) {
-    throw new Error(`negative numbers not allowed ${negative_nums.join(",")}`);
-  }
-
-  const sum = numbers_arr.reduce((acc, val) => acc + val, 0);
-  return sum;
+  return delimiters;
 }
 
 module.exports = {
